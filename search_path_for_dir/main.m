@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 
 int main(int argc, const char * argv[]) {
+    if(argc != 3)
+        return 1;
+    
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(atoi(argv[1]), atoi(argv[2]), YES);
+        NSString *path = [paths objectAtIndex:0];
+        [path writeToFile:@"/dev/stdout" atomically:NO encoding:NSUTF8StringEncoding error:nil];
     }
     return 0;
 }
